@@ -1,26 +1,25 @@
 import { createApp } from "vue";
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import store from "./store/index";
-import AuthHandler from './components/AuthHandler'
+import AuthHandler from "./components/AuthHandler";
 
 const routes = [
+    // {
+    //     path: "/",
+    //     name: "home",
+    //     component: App,
+    // },
     {
-        path: '/',
-        name: 'home',
-        component: App
-    },
-    {
-        path: '/oauth2/callback',
-        name: 'auth',
+        path: "/oauth2/callback/",
+        name: "AuthHandler",
         component: AuthHandler,
-    }
-]
+    },
+];
 
 const router = createRouter({
-    mode: 'history',
     history: createWebHistory(),
-    routes
-})
+    routes,
+});
 
-createApp(App).use(store, router).mount('#app');
+createApp(App).use(store).use(router).mount("#app");
