@@ -1,30 +1,30 @@
-import api from '../../api/imgur';
+import api from "../../api/imgur";
 
 const state = {
-  images: []
+    images: [],
 };
 
 const getters = {
-  allImages: state => state.images
+    allImages: (state) => state.images,
 };
 
 const actions = {
-  async fetchImages({ rootState }) {
-    const { token } = rootState.auth;
-    const response = await api.fetchImages(token);
-    console.log(response)
-  },
+    async fetchImages({ rootState, commit }) {
+        const { token } = rootState.auth;
+        const response = await api.fetchImages(token);
+        commit("setImages", response.data.data);
+    },
 };
 
 const mutations = {
-  setImages: (state, images) => {
-    state.images = images;
-  }
+    setImages: (state, images) => {
+        state.images = images;
+    },
 };
 
 export default {
-  state,
-  getters,
-  actions,
-  mutations
+    state,
+    getters,
+    actions,
+    mutations,
 };

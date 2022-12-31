@@ -1,7 +1,9 @@
 <template>
     <AppHeader></AppHeader>
-    <router-link to="/oauth2/callback/"></router-link>
-    <router-view></router-view>
+    <div class="ui container">
+        <router-link to="/oauth2/callback/"></router-link>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
